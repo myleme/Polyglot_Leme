@@ -37,6 +37,7 @@
     this.currentLocale = options.locale || 'en';
     this.allowMissing = !!options.allowMissing;
     this.warn = options.warn || warn;
+    this.tokenPattern = this.options || '{{.*?}}';
   }
 
   // ### Version
@@ -180,7 +181,7 @@
     if (typeof phrase === 'string') {
       options = clone(options);
       result = choosePluralForm(phrase, this.currentLocale, options.smart_count);
-      result = interpolate(result, options);
+      result = interpolate(result, options, this.tokenPattern);
     }
     return result;
   };
@@ -267,13 +268,13 @@
   //
   // Does the dirty work. Creates a `RegExp` object for each
   // interpolation placeholder.
-  function interpolate(phrase, options) {
+  function interpolate(phrase, options, tokenPattern) {
     for (var arg in options) {
       if (arg !== '_' && options.hasOwnProperty(arg)) {
         // We create a new `RegExp` each time instead of using a more-efficient
         // string replace so that the same argument can be replaced multiple times
         // in the same phrase.
-        phrase = phrase.replace(new RegExp('%\\{'+arg+'\\}', 'g'), options[arg]);
+        phrase = phrase.replace(new RegExp(tokenPattern, 'g'), options[arg]);
       }
     }
     return phrase;
