@@ -4,11 +4,11 @@ This is the modified Polyglot used in Leme.
 
 This project have two remotes
 
-### origin
+### origin https://github.com/myleme/Polyglot_Leme.git 
 
 All the changes needed for this to work with Leme should be applied in this remote.
 
-### upstream
+### upstream https://github.com/airbnb/polyglot.js.git
 
 The original project from AirBnB.
 
