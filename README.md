@@ -1,18 +1,18 @@
-#Polyglot Leme
+# Polyglot Leme
 
 This is the modified Polyglot used in Leme.
 
 This project have two remotes
 
-###origin
+### origin
 
 All the changes needed for this to work with Leme should be applied in this remote.
 
-###upstream
+### upstream
 
 The original project from AirBnB.
 
-##Syncing the project
+## Syncing the project
 
     - git fetch upstream
     - git checkout master
